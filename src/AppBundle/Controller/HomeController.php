@@ -3,9 +3,10 @@
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
-class HomeController
+class HomeController extends Controller
 {
     /**
      * @Route("/")
@@ -23,5 +24,19 @@ class HomeController
     {
         return new Response('Hey there '.$name.' having fun?');
     }
+
+    /**
+     * @Route("/twig")
+     * @return Response
+     */
+    public function twigAction()
+    {
+        $twig = $this->container->get('templating');
+        $html = $twig->render('twig.html.twig', [
+            'message' => 'Hello Twig',
+        ]);
+
+        return new Response($html);
+    }    
 
 }
