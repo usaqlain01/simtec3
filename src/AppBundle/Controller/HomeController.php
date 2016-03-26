@@ -31,12 +31,16 @@ class HomeController extends Controller
      */
     public function twigAction()
     {
-        $twig = $this->container->get('templating');
-        $html = $twig->render('twig.html.twig', [
-            'message' => 'Hello Twig',
+//        $twig = $this->container->get('templating');
+//        $html = $twig->render('twig.html.twig', [
+//            'message' => 'Hello Twig',
+//        ]);
+//
+//        return new Response($html);
+//  ALL ABOVE CODE CAN BE REPLACED BY this shortcut
+        return $this->render('twig.html.twig', [
+        'message' => 'Hello Twig',
         ]);
-
-        return new Response($html);
     }    
 
 }
